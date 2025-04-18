@@ -8,8 +8,10 @@ import BonusPage from "./bonuses/page";
 export default function Home() {
   return (
     <>
-  <Navbar />
-  <AboutPage />
+    <div className='p-6'>
+    <Navbar />
+    <AboutPage />
+    </div>
   <ProgramPage />
   <ReviewPage />
   <Whypage />

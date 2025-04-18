@@ -44,46 +44,54 @@ export default function ProgramPage() {
   const [selectedMode, setSelectedMode] = useState(programModes[0])
 
   return (
-    <div className='bg-[#50477C] p-5 mx-44'>
-    <div className='bg-[#50477C] border-2 text-white py-16 px-6 lg:px-20 rounded-3xl'>
-      <h1 className='text-4xl lg:text-5xl font-bold text-center mb-10'>
-        What Makes My Program Unique?
-      </h1>
+    <div className='bg-[#50477C] py-10 sm:px-6 md:px-12'>
+      <div className='bg-[#50477C] border-2 text-white py-16 px-6 lg:px-20 rounded-3xl'>
+        <h1 className='text-4xl sm:text-5xl font-bold text-center mb-10'>
+          What Makes My Program Unique?
+        </h1>
 
-      {/* Button group */}
-      <div className='flex flex-wrap justify-center gap-4 mb-12'>
-        {programModes.map((mode) => (
-          <button
-            key={mode.label}
-            onClick={() => setSelectedMode(mode)}
-            className={`px-4 py-1 rounded-full border text-sm font-medium ${
-              selectedMode.label === mode.label
-                ? 'bg-white text-[#50477C]'
-                : 'bg-[#50477C] text-white border-white'
-            }`}
-          >
-            {mode.label}
-          </button>
-        ))}
-      </div>
-
-      {/* Main content grid */}
-      <div className='flex flex-col lg:flex-row items-center justify-between gap-12'>
-        {/* Image */}
-        <div className='p-4 rounded-3xl w-full max-w-sm'>
-          <img src={selectedMode.image} alt={selectedMode.title} className='w-full h-auto' />
+        {/* Button group */}
+        <div className='flex flex-wrap justify-center gap-4 mb-12'>
+          {programModes.map((mode) => (
+            <button
+              key={mode.label}
+              onClick={() => setSelectedMode(mode)}
+              className={`px-4 py-2 rounded-full border text-sm font-medium transition duration-300 transform ${
+                selectedMode.label === mode.label
+                  ? 'bg-white text-[#50477C] scale-105'
+                  : 'bg-[#50477C] text-white border-white hover:scale-105'
+              }`}
+            >
+              {mode.label}
+            </button>
+          ))}
         </div>
 
-        {/* Text content */}
-        <div className='text-center lg:text-left max-w-xl'>
-          <h2 className='text-4xl lg:text-5xl font-semibold mb-4'>{selectedMode.title}</h2>
-          <p className='text-lg font-light mb-6'>{selectedMode.description}</p>
-          <button className='text-[#50477C] text-lg font-medium bg-white rounded-full py-2 px-6 shadow-md'>
-            Join the Squad
-          </button>
+        {/* Main content grid */}
+        <div className='flex flex-col sm:flex-row items-center justify-center lg:justify-between gap-12'>
+          {/* Image */}
+          <div className='p-4 rounded-3xl w-full max-w-xs sm:max-w-md md:max-w-lg'>
+            <img
+              src={selectedMode.image}
+              alt={selectedMode.title}
+              className='w-full h-auto rounded-3xl transition-transform transform hover:scale-105'
+            />
+          </div>
+
+          {/* Text content */}
+          <div className='text-center sm:text-left max-w-lg'>
+            <h2 className='text-3xl sm:text-4xl lg:text-5xl font-semibold mb-4'>
+              {selectedMode.title}
+            </h2>
+            <p className='text-lg font-light mb-6'>
+              {selectedMode.description}
+            </p>
+            <button className='text-[#50477C] text-lg font-medium bg-white rounded-full py-3 px-8 shadow-lg hover:border-[#c488ec] border-2'>
+              Join the Squad
+            </button>
+          </div>
         </div>
       </div>
-    </div>
     </div>
   )
 }
