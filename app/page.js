@@ -5,12 +5,14 @@ import ReviewPage from "./Review/page";
 import Whypage from "./WhyUs/page";
 import BonusPage from "./bonuses/page";
 import HowItWorksPage from "./howItWorks/page";
+import HomePage from "./home/page";
 
 export default function Home() {
   return (
     <>
     <div className='p-6'>
     <Navbar />
+    <HomePage />
     <AboutPage />
     </div>
   <ProgramPage />

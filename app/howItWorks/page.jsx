@@ -57,7 +57,7 @@ export default function HowItWorksPage() {
       />
 
       <div className="mb-12 text-center relative z-10 px-4">
-        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-[#F9A8D4] to-[#50477C] bg-clip-text text-transparent">
+        <h1 className="text-3xl md:text-4xl font-bold text-[#50477C]">
           Why Choose My Prenatal Exercise Program?
         </h1>
       </div>
@@ -76,6 +76,7 @@ export default function HowItWorksPage() {
           </div>
         ))}
       </div>
+      <br/>
     </div>
   );
 }
