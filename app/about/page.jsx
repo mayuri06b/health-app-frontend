@@ -4,7 +4,7 @@ import MissionCard from "@/components/missionCard";
 
 export default function AboutPage() {
   return (
-    <div className="rounded-b-4xl min-h-screen px-6 py-12 bg-white flex flex-col items-center justify-center">
+    <div className="rounded-b-4xl px-6 pb-12 bg-white flex flex-col items-center justify-center">
       <div className="max-w-7xl w-full flex flex-col lg:flex-row items-center justify-between gap-12">
         {/* LEFT SIDE */}
         <div className="max-w-xl space-y-6 text-center lg:text-left">
