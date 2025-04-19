@@ -4,6 +4,7 @@ import ProgramPage from "./program/page";
 import ReviewPage from "./Review/page";
 import Whypage from "./WhyUs/page";
 import BonusPage from "./bonuses/page";
+import HowItWorksPage from "./howItWorks/page";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
   <ReviewPage />
   <Whypage />
   <BonusPage />
+  <HowItWorksPage />
   </>
   );
 }

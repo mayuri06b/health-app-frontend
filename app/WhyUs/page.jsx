@@ -25,7 +25,7 @@ export default function WhatIncluded() {
         {/* Trimester Cards Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {/* First Trimester */}
-          <div className="bg-[#F4F2FA] rounded-2xl p-6 flex flex-col justify-between h-full">
+          <div className="bg-[#F4F2FA] rounded-2xl p-6 w-3xl flex flex-col justify-between h-full">
             <div>
               <div className="inline-block px-4 py-1 rounded-full border border-[#50477C] text-[#50477C] text-sm mb-4">
                 First Trimester
