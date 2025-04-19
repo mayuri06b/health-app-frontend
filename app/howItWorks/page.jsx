@@ -55,17 +55,17 @@ export default function HowItWorksPage() {
   }, [controls])
 
   return (
-    <div className="relative px-3 py-10 sm:px-4 sm:py-12 bg-white mx-2 sm:m-6 rounded-2xl overflow-hidden">
-      {/* Decorative Images - hidden on mobile */}
+    <div className="relative px-4 py-10 sm:px-6 sm:py-12 bg-white mx-2 sm:mx-6 rounded-2xl overflow-hidden">
+      {/* Decorative Leaves - visible on all screens with adjusted positions */}
       <img
         src="/Leaves.svg"
         alt="Decorative Leaves"
-        className="absolute top-[-15px] left-[-100px] w-[300px] sm:w-[350px] rotate-90 pointer-events-none hidden sm:block"
+        className="absolute top-[-30px] left-[-30px] w-[180px] rotate-45 sm:top-[-15px] sm:left-[-100px] sm:w-[300px] sm:rotate-90 pointer-events-none"
       />
       <img
         src="/bg2.svg"
         alt="Decorative Accent"
-        className="absolute right-[-100px] w-[300px] sm:w-[400px] rotate-270 pointer-events-none hidden sm:block"
+        className="absolute bottom-[-30px] right-[-30px] w-[180px] rotate-[-45deg] sm:top-0 sm:right-[-100px] sm:w-[400px] sm:rotate-[270deg] pointer-events-none"
       />
 
       <div className="mb-10 sm:mb-12 text-center relative z-10 px-2 sm:px-4">
@@ -74,8 +74,8 @@ export default function HowItWorksPage() {
         </h1>
       </div>
 
-      {/* Animated Cards */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-7xl mx-auto relative z-10 px-1 sm:px-2">
+      {/* Animated Feature Cards */}
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-x-2 gap-y-0 sm:gap-x-2 sm:gap-y-0 max-w-7xl mx-auto relative z-10 px-1 sm:px-2">
         {features.map((feature, index) => (
           <motion.div
             key={index}

@@ -1,9 +1,20 @@
-import React from 'react'
+'use client'
+import React, { useState } from 'react'
 import LearnMoreButton from '@/components/learnMoreButton'
 
 export default function BonusPage() {
+  const [clickedCard, setClickedCard] = useState(null)
+
+  const handleCardClick = (index) => {
+    if (clickedCard === index) {
+      setClickedCard(null)  // Deselect card if clicked again
+    } else {
+      setClickedCard(index)  // Set clicked card
+    }
+  }
+
   return (
-    <div className="bg-white px-6 py-16">
+    <div className="bg-white px-10 pt-6 pb-16 m-6 rounded-2xl">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left side: Tag and Heading */}
         <div>
@@ -29,11 +40,15 @@ export default function BonusPage() {
       {/* Cards section */}
       <div className="flex flex-wrap justify-center gap-8 mt-8">
         {/* Card 1 */}
-        <div className="bg-[url('/bonus_image1.svg')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between transition-all transform hover:scale-105 hover:rotate-3 hover:shadow-lg duration-500">
-          <div className="flex justify-end">
-            <img src="/arrow_white.svg" className="w-14 opacity-80 hover:opacity-100 transition-opacity duration-300" />
+        <div
+          className={`relative bg-[url('/bonus_image1.jpg')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out transform ${clickedCard === 0 ? 'scale-110 z-20 shadow-xl' : 'scale-100 z-10'}`}
+          onClick={() => handleCardClick(0)}
+        >
+          <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div> {/* Overlay */}
+          <div className="flex justify-end z-10">
+            <img src="/arrow_white.svg" className="w-14" />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 z-10">
             <h2 className="text-3xl font-bold">Pregnancy Nutrition Guide</h2>
             <p className="text-sm">Nutrient-packed meal ideas and tips to fuel your body and your baby.</p>
             <div className="space-x-3">
@@ -44,11 +59,15 @@ export default function BonusPage() {
         </div>
 
         {/* Card 2 */}
-        <div className="bg-[url('/bonus_image1.svg')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between transition-all transform hover:scale-105 hover:rotate-3 hover:shadow-lg duration-500">
-          <div className="flex justify-end">
-            <img src="/arrow_white.svg" className="w-14 opacity-80 hover:opacity-100 transition-opacity duration-300" />
+        <div
+          className={`relative bg-[url('/bonus_image2.png')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out transform ${clickedCard === 1 ? 'scale-110 z-20 shadow-xl' : 'scale-100 z-10'}`}
+          onClick={() => handleCardClick(1)}
+        >
+          <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div> {/* Overlay */}
+          <div className="flex justify-end z-10">
+            <img src="/arrow_white.svg" className="w-14" />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 z-10">
             <h2 className="text-3xl font-bold">Birth Preparation Guide</h2>
             <p className="text-sm">Practical tips to help you feel confident and prepared for labor.</p>
             <div className="space-x-3">
@@ -59,11 +78,15 @@ export default function BonusPage() {
         </div>
 
         {/* Card 3 */}
-        <div className="bg-[url('/bonus_image1.svg')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between transition-all transform hover:scale-105 hover:rotate-3 hover:shadow-lg duration-500">
-          <div className="flex justify-end">
-            <img src="/arrow_white.svg" className="w-14 opacity-80 hover:opacity-100 transition-opacity duration-300" />
+        <div
+          className={`relative bg-[url('/bonus_image3.jpg')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out transform ${clickedCard === 2 ? 'scale-110 z-20 shadow-xl' : 'scale-100 z-10'}`}
+          onClick={() => handleCardClick(2)}
+        >
+          <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div> {/* Overlay */}
+          <div className="flex justify-end z-10">
+            <img src="/arrow_white.svg" className="w-14" />
           </div>
-          <div className="space-y-2">
+          <div className="space-y-2 z-10">
             <h2 className="text-3xl font-bold">Trimester-by-Trimester Guide</h2>
             <p className="text-sm">Month-by-month advice on what to expect and how to care for yourself.</p>
             <div className="space-x-3">
