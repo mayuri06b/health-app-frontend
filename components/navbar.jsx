@@ -8,26 +8,33 @@ const Navbar = () => {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <nav className="rounded-t-4xl bg-white px-6 pt-4 flex items-center justify-between">
+    <nav className="rounded-t-4xl bg-white px-4 sm:px-6 pt-4 flex items-center justify-between relative">
       {/* Logo */}
       <div className="flex items-center space-x-2">
-        <Image src={logoImg} alt="Logo" width={100} height={100} />
+        <Image src={logoImg} alt="Logo" width={80} height={80} className="w-20 sm:w-24" />
       </div>
 
       {/* Desktop Nav Links */}
-      <ul className="hidden md:flex space-x-6 bg-[#f0ebeb] rounded-full px-6 py-2 text-[#50477C] font-medium">
-        <li><a href="#" className="px-3 py-1 rounded-full bg-white text-[#50477C]">Home</a></li>
-        <li><a href="#" className="hover:text-[#50477C]">About</a></li>
-        <li><a href="#" className="hover:text-[#50477C]">Program</a></li>
-        <li><a href="#" className="hover:text-[#50477C]">Why Us</a></li>
-        <li><a href="#" className="hover:text-[#50477C]">Reviews</a></li>
-        <li><a href="#" className="hover:text-[#50477C]">Bonuses</a></li>
-        <li><a href="#" className="hover:text-[#50477C]">How it Works</a></li>
+      <ul className="hidden md:flex space-x-4 lg:space-x-6 bg-[#f0ebeb] rounded-full px-4 py-2 text-[#50477C] font-medium text-sm lg:text-base">
+        <li>
+          <a
+            href="#"
+            className="px-3 py-1 rounded-full bg-white text-[#50477C] transition duration-300 hover:scale-105"
+          >
+            Home
+          </a>
+        </li>
+        <li><a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">About</a></li>
+        <li><a href="/program" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Program</a></li>
+        <li><a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Why Us</a></li>
+        <li><a href="/Review" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Reviews</a></li>
+        <li><a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Bonuses</a></li>
+        <li><a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">How it Works</a></li>
       </ul>
 
       {/* CTA Button (Desktop) */}
       <div className="hidden md:block">
-        <button className="bg-[#50477C] text-white rounded-full px-5 py-2 hover:bg-[#50477C] transition">
+        <button className="bg-[#50477C] text-white rounded-full px-4 lg:px-5 py-2 text-sm lg:text-base transition duration-300 hover:bg-[#3e3a65] hover:scale-105">
           Join Now
         </button>
       </div>
@@ -38,7 +45,6 @@ const Navbar = () => {
           onClick={() => setMenuOpen(!menuOpen)}
           className="text-[#50477C] focus:outline-none"
         >
-          {/* Simple Hamburger Icon */}
           <div className="space-y-1">
             <div className="w-6 h-0.5 bg-[#50477C]"></div>
             <div className="w-6 h-0.5 bg-[#50477C]"></div>
@@ -49,15 +55,15 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-20 left-0 right-0 bg-[#f0ebeb] flex flex-col items-center space-y-4 py-6 text-purple-800 font-medium z-50 md:hidden">
-          <a href="#" className="px-3 py-1 rounded-full bg-white text-purple-800">Home</a>
-          <a href="#" className="hover:text-[#50477C]">About</a>
-          <a href="#" className="hover:text-[#50477C]">Program</a>
-          <a href="#" className="hover:text-[#50477C]">Why Us</a>
-          <a href="#" className="hover:text-[#50477C]">Reviews</a>
-          <a href="#" className="hover:text-[#50477C]">Bonuses</a>
-          <a href="#" className="hover:text-[#50477C]">How it Works</a>
-          <button className="bg-purple-800 text-white rounded-full px-5 py-2 hover:bg-purple-700 transition">
+        <div className="absolute top-20 left-0 right-0 bg-[#f0ebeb] flex flex-col items-center space-y-4 py-6 text-[#50477C] font-medium text-sm z-50 md:hidden">
+          <a href="#" className="px-3 py-1 rounded-full bg-white text-[#50477C] transition duration-300 hover:scale-105">Home</a>
+          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">About</a>
+          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Program</a>
+          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Why Us</a>
+          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Reviews</a>
+          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Bonuses</a>
+          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">How it Works</a>
+          <button className="bg-[#50477C] text-white rounded-full px-4 py-2 text-sm transition duration-300 hover:bg-[#3e3a65] hover:scale-105">
             Join Now
           </button>
         </div>
