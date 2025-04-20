@@ -1,89 +1,157 @@
 'use client'
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
+import { ChevronLeft, ChevronRight } from 'lucide-react'
 
 const testimonials = [
   {
     name: 'User Name 1',
+    role: 'Prenatal Member',
     rating: 5,
     review:
       'I chose this prenatal program for the birth prep education, which eased my fears about tearing and gave me confidence for a natural delivery.',
+    img: '/user1.jpg',
   },
   {
     name: 'User Name 2',
+    role: 'Fitness Enthusiast',
     rating: 4,
     review:
-      'The classes were so helpful. I started at 16 weeks after a tough first trimester, and now at 35 weeks, I’ve never felt stronger.',
+      'The classes were so helpful. I started at 16 weeks after a tough first trimester, and now at 35 weeks, Ive never felt stronger.',
+    img: '/user2.jpg',
   },
   {
     name: 'User Name 3',
+    role: 'Mother of Two',
     rating: 5,
     review:
       'Every video is well structured and motivating. I know losing the baby weight will be easier too!',
+    img: '/user3.jpg',
   },
   {
     name: 'User Name 4',
+    role: 'New Mom',
     rating: 5,
     review:
       "Amazing! The trainer is so relatable and makes you feel like you're not alone.",
+    img: '/user4.jpg',
+  },
+  {
+    name: 'User Name 5',
+    role: 'Happy Client',
+    rating: 5,
+    review: 'I love the energy and structure of each session!',
+    img: '/user5.jpg',
+  },
+  {
+    name: 'User Name 6',
+    role: 'Returning Member',
+    rating: 4,
+    review: 'Second time using this program and it still works wonders!',
+    img: '/user6.jpg',
   },
 ]
 
-export default function ReviewPage() {
+const cardsToShow = 3
+const totalPages = Math.ceil(testimonials.length / cardsToShow)
+
+export default function ReviewCarousel() {
+  const [pageIndex, setPageIndex] = useState(0)
+
+  const handleNext = () => {
+    if (pageIndex < totalPages - 1) setPageIndex((prev) => prev + 1)
+  }
+
+  const handleBack = () => {
+    if (pageIndex > 0) setPageIndex((prev) => prev - 1)
+  }
+
+  const startIndex = pageIndex * cardsToShow
+  const visibleTestimonials = testimonials.slice(
+    startIndex,
+    startIndex + cardsToShow
+  )
+
   return (
-    <div className="bg-white pt-5 pb-16 px-4 sm:px-6 lg:px-16 flex justify-center">
-      {/* Main Container */}
-      <div className="max-w-6xl w-full">
-        {/* Heading */}
-        <div className="text-center mb-14">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#50477C] leading-snug">
-            WHAT ARE MY{' '}
-            <span className="bg-gradient-to-r to-[#948ac3] from-[#b77ac5] bg-clip-text text-transparent">
-              HAPPY
-            </span>{' '}
-            CUSTOMERS SAYING
-          </h1>
-        </div>
+    <div className="bg-white py-12 px-4 relative">
+      <h2 className="text-center text-4xl font-bold text-[#50477C] mb-10">
+        WHAT ARE MY{' '}
+        <span className="bg-gradient-to-r from-[#b77ac5] to-[#948ac3] bg-clip-text text-transparent">
+          HAPPY
+        </span>{' '}
+        CUSTOMERS SAYING
+      </h2>
 
-        {/* Main Section */}
-        <div className="flex flex-col lg:flex-row items-center lg:items-start gap-12 justify-center">
-          {/* Left Image */}
-          <motion.div
-            className="w-full sm:w-[400px] h-[450px] rounded-3xl bg-[url('/review1.jpg')] bg-cover bg-center shadow-xl"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-          ></motion.div>
+      <div className="flex justify-center items-center gap-6">
+        {/* Back Button */}
+        <button
+          onClick={handleBack}
+          disabled={pageIndex === 0}
+          className={`p-3 rounded-full ${
+            pageIndex === 0 ? 'bg-gray-300' : 'bg-[#50477C] text-white'
+          }`}
+        >
+          <ChevronLeft />
+        </button>
 
-          {/* Testimonials Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 w-full max-w-2xl mt-12 lg:mt-0">
-            {testimonials.map((t, i) => (
-              <motion.div
-                key={i}
-                className="bg-white rounded-3xl shadow-lg p-6 flex flex-col justify-between transition-transform duration-500 ease-out"
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 + i * 0.2 }}
-              >
-                <div>
-                  <h2 className="font-semibold text-lg text-[#50477C] mb-2">{t.name}</h2>
-                  <div className="text-yellow-500 text-lg">
-                    {'★'.repeat(t.rating)}
-                    {'☆'.repeat(5 - t.rating)}
+        {/* Group Animated Cards */}
+        <div className="w-full max-w-5xl overflow-hidden">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={pageIndex}
+              className="flex gap-6 justify-center"
+              initial={{ x: 100, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: -100, opacity: 0 }}
+              transition={{ duration: 0.4 }}
+            >
+              {visibleTestimonials.map((testimonial, index) => (
+                <div
+                  key={index}
+                  className="rounded-3xl border border-gray-300 p-6 bg-white w-full max-w-sm flex-shrink-0"
+                >
+                  <p className="text-gray-600 mb-4">{testimonial.review}</p>
+                  <div className="flex items-center gap-4">
+                    <img
+                      src={testimonial.img}
+                      alt={testimonial.name}
+                      className="w-12 h-12 rounded-full object-cover border"
+                    />
+                    <div>
+                      <p className="font-semibold text-[#50477C]">{testimonial.name}</p>
+                      <p className="text-sm text-blue-500">{testimonial.role}</p>
+                    </div>
                   </div>
                 </div>
-                <p className="text-gray-600 text-sm mt-4 leading-relaxed">{t.review}</p>
-              </motion.div>
-            ))}
-          </div>
+              ))}
+            </motion.div>
+          </AnimatePresence>
         </div>
 
-        {/* CTA */}
-        <div className="text-center mt-16">
-          <button className="bg-[#50477C] text-white text-lg font-semibold px-10 py-3 rounded-full hover:bg-[#645ba5] transition duration-300">
-            Join the Program
-          </button>
-        </div>
+        {/* Next Button */}
+        <button
+          onClick={handleNext}
+          disabled={pageIndex === totalPages - 1}
+          className={`p-3 rounded-full ${
+            pageIndex === totalPages - 1
+              ? 'bg-gray-300'
+              : 'bg-[#50477C] text-white'
+          }`}
+        >
+          <ChevronRight />
+        </button>
+      </div>
+
+      {/* Page Indicator */}
+      <div className="flex justify-center gap-2 mt-6">
+        {Array.from({ length: totalPages }).map((_, idx) => (
+          <span
+            key={idx}
+            className={`h-2 w-2 rounded-full ${
+              idx === pageIndex ? 'bg-[#50477C]' : 'bg-gray-300'
+            }`}
+          ></span>
+        ))}
       </div>
     </div>
   )
