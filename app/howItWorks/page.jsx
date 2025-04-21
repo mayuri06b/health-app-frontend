@@ -55,7 +55,7 @@ export default function HowItWorksPage() {
   }, [controls])
 
   return (
-    <div className="relative px-4 py-10 sm:px-6 sm:py-12 bg-white mx-2 sm:mx-6 rounded-2xl overflow-hidden">
+    <div className="relative px-4 sm:px-6 sm:py-12 bg-white mx-2 sm:mx-6 rounded-2xl overflow-hidden">
       {/* Decorative Leaves - visible on all screens with adjusted positions */}
       <img
         src="/Leaves.svg"

@@ -1,8 +1,10 @@
 'use client'
-import React, { useState } from 'react'
-import { motion, AnimatePresence } from 'framer-motion'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
 
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Star } from 'lucide-react';
+import { useState } from 'react';
+
+// Example Testimonial Data
 const testimonials = [
   {
     name: 'User Name 1',
@@ -41,7 +43,7 @@ const testimonials = [
     role: 'Happy Client',
     rating: 5,
     review: 'I love the energy and structure of each session!',
-    img: '/user5.jpg',
+    img: '/user5.jpeg',
   },
   {
     name: 'User Name 6',
@@ -52,107 +54,170 @@ const testimonials = [
   },
 ]
 
-const cardsToShow = 3
-const totalPages = Math.ceil(testimonials.length / cardsToShow)
+const cardsPerPage = 2;
 
-export default function ReviewCarousel() {
-  const [pageIndex, setPageIndex] = useState(0)
+const cardVariants = {
+  enter: { opacity: 0, y: 30 },
+  center: { opacity: 1, y: 0 },
+  exit: { opacity: 0, y: -30 },
+};
+
+const containerVariants = {
+  center: {
+    transition: {
+      staggerChildren: 0.15,
+    },
+  },
+};
+
+export default function TestimonialsSection() {
+  const [pageIndex, setPageIndex] = useState(0);
+  const [direction, setDirection] = useState(1);
+
+  const totalPages = Math.ceil(testimonials.length / cardsPerPage);
+  const visibleTestimonials = testimonials.slice(
+    pageIndex * cardsPerPage,
+    (pageIndex + 1) * cardsPerPage
+  );
 
   const handleNext = () => {
-    if (pageIndex < totalPages - 1) setPageIndex((prev) => prev + 1)
-  }
+    if (pageIndex < totalPages - 1) {
+      setDirection(1);
+      setPageIndex(pageIndex + 1);
+    }
+  };
 
   const handleBack = () => {
-    if (pageIndex > 0) setPageIndex((prev) => prev - 1)
-  }
-
-  const startIndex = pageIndex * cardsToShow
-  const visibleTestimonials = testimonials.slice(
-    startIndex,
-    startIndex + cardsToShow
-  )
+    if (pageIndex > 0) {
+      setDirection(-1);
+      setPageIndex(pageIndex - 1);
+    }
+  };
 
   return (
-    <div className="bg-white py-12 px-4 relative">
-      <h2 className="text-center text-4xl font-bold text-[#50477C] mb-10">
+    <div className="bg-white rounded-2xl m-6 py-16 px-4 relative">
+      {/* Floating decorative elements */}
+      <motion.div 
+        className="absolute top-20 left-10 w-16 h-16 rounded-full bg-[#f0e7ff] opacity-40"
+        animate={{ y: [0, 15, 0] }}
+        transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+      />
+      <motion.div 
+        className="absolute bottom-20 right-10 w-20 h-20 rounded-full bg-[#e7f0ff] opacity-40"
+        animate={{ y: [0, -15, 0] }}
+        transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
+      />
+
+      <motion.h2 
+        className="text-center text-4xl font-bold text-[#50477C] mb-12"
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
         WHAT ARE MY{' '}
         <span className="bg-gradient-to-r from-[#b77ac5] to-[#948ac3] bg-clip-text text-transparent">
           HAPPY
         </span>{' '}
         CUSTOMERS SAYING
-      </h2>
+      </motion.h2>
 
-      <div className="flex justify-center items-center gap-6">
-        {/* Back Button */}
-        <button
-          onClick={handleBack}
-          disabled={pageIndex === 0}
-          className={`p-3 rounded-full ${
-            pageIndex === 0 ? 'bg-gray-300' : 'bg-[#50477C] text-white'
-          }`}
-        >
-          <ChevronLeft />
-        </button>
-
-        {/* Group Animated Cards */}
-        <div className="w-full max-w-5xl overflow-hidden">
-          <AnimatePresence mode="wait">
+      <div className="flex flex-col items-center">
+        <div className="w-full max-w-6xl">
+          <AnimatePresence mode="popLayout" custom={direction}>
             <motion.div
               key={pageIndex}
-              className="flex gap-6 justify-center"
-              initial={{ x: 100, opacity: 0 }}
-              animate={{ x: 0, opacity: 1 }}
-              exit={{ x: -100, opacity: 0 }}
-              transition={{ duration: 0.4 }}
+              className="flex flex-wrap justify-center gap-8"
+              custom={direction}
+              variants={{ center: containerVariants.center }}
+              initial="enter"
+              animate="center"
+              exit="exit"
+              transition={{ duration: 0.5 }}
             >
               {visibleTestimonials.map((testimonial, index) => (
-                <div
-                  key={index}
-                  className="rounded-3xl border border-gray-300 p-6 bg-white w-full max-w-sm flex-shrink-0"
+                <motion.div
+                  key={`${pageIndex}-${index}`}
+                  variants={cardVariants}
+                  className="rounded-3xl border border-[#eaeaea] p-6 sm:p-8 bg-white w-full max-w-sm flex-shrink-0 shadow-lg hover:shadow-xl transition-shadow duration-300"
+                  whileHover={{ y: -5 }}
                 >
-                  <p className="text-gray-600 mb-4">{testimonial.review}</p>
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(5)].map((_, i) => (
+                      <Star 
+                        key={i} 
+                        size={18} 
+                        fill={i < testimonial.rating ? "#FFD700" : "none"} 
+                        stroke={i < testimonial.rating ? "#FFD700" : "#ddd"}
+                      />
+                    ))}
+                  </div>
+                  <p className="text-gray-600 italic mb-6 text-lg leading-relaxed relative before:content-['“'] after:content-['”'] text-wrap-balance">
+                    {testimonial.review}
+                  </p>
                   <div className="flex items-center gap-4">
-                    <img
+                    <motion.img
                       src={testimonial.img}
                       alt={testimonial.name}
-                      className="w-12 h-12 rounded-full object-cover border"
+                      className="w-14 h-14 rounded-full object-cover border-2 border-[#f0e7ff]"
+                      whileHover={{ scale: 1.05 }}
                     />
                     <div>
-                      <p className="font-semibold text-[#50477C]">{testimonial.name}</p>
-                      <p className="text-sm text-blue-500">{testimonial.role}</p>
+                      <p className="font-semibold text-[#50477C] text-lg">{testimonial.name}</p>
+                      <p className="text-sm text-[#948ac3]">{testimonial.role}</p>
                     </div>
                   </div>
-                </div>
+                </motion.div>
               ))}
             </motion.div>
           </AnimatePresence>
         </div>
 
-        {/* Next Button */}
-        <button
-          onClick={handleNext}
-          disabled={pageIndex === totalPages - 1}
-          className={`p-3 rounded-full ${
-            pageIndex === totalPages - 1
-              ? 'bg-gray-300'
-              : 'bg-[#50477C] text-white'
-          }`}
-        >
-          <ChevronRight />
-        </button>
-      </div>
-
-      {/* Page Indicator */}
-      <div className="flex justify-center gap-2 mt-6">
-        {Array.from({ length: totalPages }).map((_, idx) => (
-          <span
-            key={idx}
-            className={`h-2 w-2 rounded-full ${
-              idx === pageIndex ? 'bg-[#50477C]' : 'bg-gray-300'
+        {/* Navigation Arrows */}
+        <div className="flex justify-center items-center gap-6 mt-8">
+          <motion.button
+            onClick={handleBack}
+            disabled={pageIndex === 0}
+            whileHover={{ scale: pageIndex === 0 ? 1 : 1.1 }}
+            whileTap={{ scale: pageIndex === 0 ? 1 : 0.95 }}
+            className={`p-3 rounded-full shadow-md transition-transform duration-300 ${
+              pageIndex === 0 ? 'bg-gray-200' : 'bg-[#50477C] text-white'
             }`}
-          ></span>
-        ))}
+          >
+            <ChevronLeft size={24} />
+          </motion.button>
+
+          <motion.button
+            onClick={handleNext}
+            disabled={pageIndex === totalPages - 1}
+            whileHover={{ scale: pageIndex === totalPages - 1 ? 1 : 1.1 }}
+            whileTap={{ scale: pageIndex === totalPages - 1 ? 1 : 0.95 }}
+            className={`p-3 rounded-full shadow-md transition-transform duration-300 ${
+              pageIndex === totalPages - 1 ? 'bg-gray-200' : 'bg-[#50477C] text-white'
+            }`}
+          >
+            <ChevronRight size={24} />
+          </motion.button>
+        </div>
+
+        {/* Page Indicators */}
+        <motion.div 
+          className="flex justify-center gap-2 mt-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+        >
+          {Array.from({ length: totalPages }).map((_, idx) => (
+            <motion.span
+              key={idx}
+              onClick={() => setPageIndex(idx)}
+              className={`h-2 w-6 rounded-full cursor-pointer transition-all ${
+                idx === pageIndex ? 'bg-[#50477C] shadow-md' : 'bg-gray-300'
+              }`}
+              whileHover={{ scale: 1.2 }}
+            />
+          ))}
+        </motion.div>
       </div>
     </div>
-  )
+  );
 }
