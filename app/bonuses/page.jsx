@@ -1,20 +1,18 @@
-'use client'
-import React, { useState } from 'react'
-import LearnMoreButton from '@/components/learnMoreButton'
+'use client';
+import React from 'react';
+import LearnMoreButton from '@/components/learnMoreButton';
+import { motion } from 'framer-motion';
+
+const cardVariants = {
+  hiddenLeft: { opacity: 0, x: -100, scale: 0.8 },
+  hiddenRight: { opacity: 0, x: 100, scale: 0.8 },
+  hiddenCenter: { opacity: 0, y: 50, scale: 0.8 },
+  visible: { opacity: 1, x: 0, y: 0, scale: 1, transition: { duration: 0.8, type: 'spring' } },
+};
 
 export default function BonusPage() {
-  const [clickedCard, setClickedCard] = useState(null)
-
-  const handleCardClick = (index) => {
-    if (clickedCard === index) {
-      setClickedCard(null)  // Deselect card if clicked again
-    } else {
-      setClickedCard(index)  // Set clicked card
-    }
-  }
-
   return (
-    <div className="bg-white px-10 pt-6 pb-16 m-6 rounded-2xl">
+    <section id="bonuses" className="bg-white px-10 pt-6 pb-16 m-6 rounded-2xl">
       <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
         {/* Left side: Tag and Heading */}
         <div>
@@ -30,21 +28,23 @@ export default function BonusPage() {
         {/* Right side: Description + Button */}
         <div className="text-[#50477C]">
           <p className="text-lg mb-6">
-            Sign up for the exclusive prenatal exercise program and get 3 FREE bonuses — 
+            Sign up for the exclusive prenatal exercise program and get 3 FREE bonuses —
             specially designed to support and empower your pregnancy journey!
           </p>
           <LearnMoreButton />
         </div>
       </div>
 
-      {/* Cards section */}
+      {/* Cards */}
       <div className="flex flex-wrap justify-center gap-8 mt-8">
-        {/* Card 1 */}
-        <div
-          className={`relative bg-[url('/bonus_image1.jpg')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out transform ${clickedCard === 0 ? 'scale-110 z-20 shadow-xl' : 'scale-100 z-10'}`}
-          onClick={() => handleCardClick(0)}
+        {/* Card 1 - Left */}
+        <motion.div
+          initial="hiddenLeft"
+          animate="visible"
+          variants={cardVariants}
+          className="relative bg-[url('/bonus_image1.jpg')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between hover:scale-105 transition-transform duration-300 shadow-lg"
         >
-          <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div> {/* Overlay */}
+          <div className="absolute inset-0 bg-black opacity-40 rounded-2xl" />
           <div className="flex justify-end z-10">
             <img src="/arrow_white.svg" className="w-14" />
           </div>
@@ -52,18 +52,20 @@ export default function BonusPage() {
             <h2 className="text-3xl font-bold">Pregnancy Nutrition Guide</h2>
             <p className="text-sm">Nutrient-packed meal ideas and tips to fuel your body and your baby.</p>
             <div className="space-x-3">
-              <button className="py-1 rounded-3xl px-6 border-[#dfd4e276] border-1 bg-[#bda4c53e] transition-transform transform hover:scale-105 duration-300">Nutrients</button>
-              <button className="py-1 rounded-3xl px-6 border-[#dfd4e276] border-1 bg-[#bda4c53e] transition-transform transform hover:scale-105 duration-300">Meal</button>
+              <button className="py-1 rounded-3xl px-6 bg-[#bda4c53e] hover:scale-105 transition duration-300">Nutrients</button>
+              <button className="py-1 rounded-3xl px-6 bg-[#bda4c53e] hover:scale-105 transition duration-300">Meal</button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Card 2 */}
-        <div
-          className={`relative bg-[url('/bonus_image2.png')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out transform ${clickedCard === 1 ? 'scale-110 z-20 shadow-xl' : 'scale-100 z-10'}`}
-          onClick={() => handleCardClick(1)}
+        {/* Card 2 - Center */}
+        <motion.div
+          initial="hiddenCenter"
+          animate="visible"
+          variants={cardVariants}
+          className="relative bg-[url('/bonus_image2.png')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between hover:scale-105 transition-transform duration-300 shadow-lg"
         >
-          <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div> {/* Overlay */}
+          <div className="absolute inset-0 bg-black opacity-40 rounded-2xl" />
           <div className="flex justify-end z-10">
             <img src="/arrow_white.svg" className="w-14" />
           </div>
@@ -71,18 +73,20 @@ export default function BonusPage() {
             <h2 className="text-3xl font-bold">Birth Preparation Guide</h2>
             <p className="text-sm">Practical tips to help you feel confident and prepared for labor.</p>
             <div className="space-x-3">
-              <button className="py-1 rounded-3xl px-6 border-[#dfd4e276] border-1 bg-[#bda4c53e] transition-transform transform hover:scale-105 duration-300">Confident</button>
-              <button className="py-1 rounded-3xl px-6 border-[#dfd4e276] border-1 bg-[#bda4c53e] transition-transform transform hover:scale-105 duration-300">Labor</button>
+              <button className="py-1 rounded-3xl px-6 bg-[#bda4c53e] hover:scale-105 transition duration-300">Confident</button>
+              <button className="py-1 rounded-3xl px-6 bg-[#bda4c53e] hover:scale-105 transition duration-300">Labor</button>
             </div>
           </div>
-        </div>
+        </motion.div>
 
-        {/* Card 3 */}
-        <div
-          className={`relative bg-[url('/bonus_image3.jpg')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between transition-all duration-300 ease-out transform ${clickedCard === 2 ? 'scale-110 z-20 shadow-xl' : 'scale-100 z-10'}`}
-          onClick={() => handleCardClick(2)}
+        {/* Card 3 - Right */}
+        <motion.div
+          initial="hiddenRight"
+          animate="visible"
+          variants={cardVariants}
+          className="relative bg-[url('/bonus_image3.jpg')] bg-cover p-6 text-white h-96 w-full sm:w-80 md:w-96 rounded-2xl flex flex-col justify-between hover:scale-105 transition-transform duration-300 shadow-lg"
         >
-          <div className="absolute inset-0 bg-black opacity-40 rounded-2xl"></div> {/* Overlay */}
+          <div className="absolute inset-0 bg-black opacity-40 rounded-2xl" />
           <div className="flex justify-end z-10">
             <img src="/arrow_white.svg" className="w-14" />
           </div>
@@ -90,13 +94,13 @@ export default function BonusPage() {
             <h2 className="text-3xl font-bold">Trimester-by-Trimester Guide</h2>
             <p className="text-sm">Month-by-month advice on what to expect and how to care for yourself.</p>
             <div className="space-x-3">
-              <button className="py-1 rounded-3xl px-6 border-[#dfd4e276] border-1 bg-[#bda4c53e] transition-transform transform hover:scale-105 duration-300">Monthly</button>
-              <button className="py-1 rounded-3xl px-6 border-[#dfd4e276] border-1 bg-[#bda4c53e] transition-transform transform hover:scale-105 duration-300">Care</button>
-              <button className="py-1 rounded-3xl px-6 border-[#dfd4e276] border-1 bg-[#bda4c53e] transition-transform transform hover:scale-105 duration-300">Advice</button>
+              <button className="py-1 rounded-3xl px-6 bg-[#bda4c53e] hover:scale-105 transition duration-300">Monthly</button>
+              <button className="py-1 rounded-3xl px-6 bg-[#bda4c53e] hover:scale-105 transition duration-300">Care</button>
+              <button className="py-1 rounded-3xl px-6 bg-[#bda4c53e] hover:scale-105 transition duration-300">Advice</button>
             </div>
           </div>
-        </div>
+        </motion.div>
       </div>
-    </div>
-  )
+    </section>
+  );
 }

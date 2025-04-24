@@ -4,6 +4,9 @@
   --background: #50477C;
   --foreground: #171717;
 }
+html {
+  scroll-behavior: smooth;
+}
 
 @theme inline {
   --color-background: var(--background);

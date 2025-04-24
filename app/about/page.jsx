@@ -6,7 +6,7 @@ import { motion } from "framer-motion"; // Import Framer Motion
 
 export default function AboutPage() {
   return (
-    <div className="m-6 p-10 rounded-3xl bg-gradient-to-b from-white to-[#f9f9fb]">
+    <section id="about" className="m-6 p-10 rounded-3xl bg-gradient-to-b from-white to-[#f9f9fb]">
       <div className="max-w-7xl mx-auto w-full flex flex-col lg:flex-row gap-12">
         {/* Left Section - Text and Carousel */}
         <div className="lg:w-1/2 space-y-8">
@@ -31,7 +31,7 @@ export default function AboutPage() {
           <motion.div
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
+            viewport={{ once: false }}
             transition={{ duration: 1, delay: 0.4 }}
             className="w-full aspect-video mb-1"
           >
@@ -43,7 +43,7 @@ export default function AboutPage() {
         <motion.div
           initial={{ opacity: 0, x: 50 }}
           whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: false }}
           transition={{ duration: 0.8, delay: 0.6 }}
           className="lg:w-1/2 flex justify-center lg:justify-end items-center"
         >
@@ -52,6 +52,6 @@ export default function AboutPage() {
           </div>
         </motion.div>
       </div>
-    </div>
+    </section>
   );
 }

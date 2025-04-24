@@ -12,24 +12,18 @@ const Navbar = () => {
       <div className="flex items-center space-x-2">
         <Image src={logoImg} alt="Logo" width={80} height={80} className="w-20 sm:w-24" />
       </div>
-      <ul className="hidden md:flex space-x-4 lg:space-x-6 bg-[#f0ebeb] rounded-full px-4 py-2 text-[#50477C] font-medium text-sm lg:text-base">
-        <li>
-          <a
-            href="#"
-            className="px-3 py-1 rounded-full bg-white text-[#50477C] transition duration-300 hover:scale-105"
-          >
-            Home
-          </a>
-        </li>
-        <li><a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">About</a></li>
-        <li><a href="/program" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Program</a></li>
-        <li><a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Why Us</a></li>
-        <li><a href="/Review" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Reviews</a></li>
-        <li><a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Bonuses</a></li>
-        <li><a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">How it Works</a></li>
+      <ul className="hidden md:flex space-x-4 lg:space-x-6 bg-[#e1ddf0] rounded-full px-4 py-2 text-[#50477C] font-medium text-sm lg:text-base">
+        <li><a href="#home" className="px-3 py-1 rounded-full bg-white text-[#50477C] transition duration-300 hover:scale-105">Home</a></li>
+        <li><a href="#about" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">About</a></li>
+        <li><a href="#program" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Program</a></li>
+        <li><a href="#whyUs" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Why Us</a></li>
+        <li><a href="#review" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Reviews</a></li>
+        <li><a href="#bonuses" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Bonuses</a></li>
+        <li><a href="#howItWorks" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">How it Works</a></li>
       </ul>
 
-      {/* CTA Button (Desktop) */}
+
+      
       <div className="hidden md:block">
         <button className="bg-[#50477C] text-white rounded-full px-4 lg:px-5 py-2 text-sm lg:text-base transition duration-300 hover:bg-[#8a83b5] hover:scale-105">
           Join Now
@@ -52,14 +46,14 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="absolute top-20 left-0 right-0 bg-[#f0ebeb] flex flex-col items-center space-y-4 py-6 text-[#50477C] font-medium text-sm z-50 md:hidden">
-          <a href="#" className="px-3 py-1 rounded-full bg-white text-[#50477C] transition duration-300 hover:scale-105">Home</a>
-          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">About</a>
-          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Program</a>
-          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Why Us</a>
-          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Reviews</a>
-          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">Bonuses</a>
-          <a href="#" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#e0dede] px-2 py-1 rounded-full">How it Works</a>
+        <div className="absolute top-20 left-0 right-0 bg-[#e1ddf0] flex flex-col items-center space-y-4 py-6 text-[#50477C] font-medium text-sm z-50 md:hidden">
+          <a href="#home" className="px-3 py-1 rounded-full bg-white text-[#50477C] transition duration-300 hover:scale-105">Home</a>
+          <a href="#about" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">About</a>
+          <a href="#program" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Program</a>
+          <a href="#whyUs" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Why Us</a>
+          <a href="#reviews" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Reviews</a>
+          <a href="#bonuses" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Bonuses</a>
+          <a href="#howItWorks" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">How it Works</a>
           <button className="bg-[#50477C] text-white rounded-full px-4 py-2 text-sm transition duration-300 hover:bg-[#3e3a65] hover:scale-105">
             Join Now
           </button>

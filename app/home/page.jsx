@@ -17,6 +17,7 @@ export default function HomePage() {
   };
 
   return (
+    <section id='home'>
     <div className='m-6 pt-5 pb-8 bg-gradient-to-t from-white via-[#f9f9fb] to-white rounded-3xl'>
       <Navbar />
 
@@ -107,5 +108,6 @@ export default function HomePage() {
         </div>
       </div>
     </div>
+    </section>
   );
 }
