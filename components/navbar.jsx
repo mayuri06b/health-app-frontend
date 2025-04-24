@@ -47,13 +47,13 @@ const Navbar = () => {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="absolute top-20 left-0 right-0 bg-[#e1ddf0] flex flex-col items-center space-y-4 py-6 text-[#50477C] font-medium text-sm z-50 md:hidden">
-          <a href="#home" className="px-3 py-1 rounded-full bg-white text-[#50477C] transition duration-300 hover:scale-105">Home</a>
-          <a href="#about" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">About</a>
-          <a href="#program" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Program</a>
-          <a href="#whyUs" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Why Us</a>
-          <a href="#reviews" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Reviews</a>
-          <a href="#bonuses" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Bonuses</a>
-          <a href="#howItWorks" className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">How it Works</a>
+          <a href="#home" onClick={() => setMenuOpen(false)} className="px-3 py-1 rounded-full bg-white text-[#50477C] transition duration-300 hover:scale-105">Home</a>
+          <a href="#about" onClick={() => setMenuOpen(false)} className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">About</a>
+          <a href="#program" onClick={() => setMenuOpen(false)} className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Program</a>
+          <a href="#whyUs" onClick={() => setMenuOpen(false)} className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Why Us</a>
+          <a href="#reviews" onClick={() => setMenuOpen(false)} className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Reviews</a>
+          <a href="#bonuses" onClick={() => setMenuOpen(false)} className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">Bonuses</a>
+          <a href="#howItWorks" onClick={() => setMenuOpen(false)} className="hover:text-[#50477C] transition duration-300 hover:scale-105 hover:bg-[#d5ccf4] px-2 py-1 rounded-full">How it Works</a>
           <button className="bg-[#50477C] text-white rounded-full px-4 py-2 text-sm transition duration-300 hover:bg-[#3e3a65] hover:scale-105">
             Join Now
           </button>

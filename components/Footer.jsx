@@ -17,10 +17,10 @@ const Footer = () => {
         <div>
           <h4 className="text-lg font-medium mb-2">Quick Links</h4>
           <ul className="space-y-1 text-sm text-[#50477C]/80">
-            <li><a href="#" className="hover:underline">Home</a></li>
-            <li><a href="#" className="hover:underline">About</a></li>
-            <li><a href="#" className="hover:underline">Programs</a></li>
-            <li><a href="#" className="hover:underline">Contact</a></li>
+            <li><a href="#home" className="hover:underline">Home</a></li>
+            <li><a href="#about" className="hover:underline">About</a></li>
+            <li><a href="#program" className="hover:underline">Programs</a></li>
+            <li><a href="#review" className="hover:underline">Review</a></li>
           </ul>
         </div>
 

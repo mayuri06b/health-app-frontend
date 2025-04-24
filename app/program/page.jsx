@@ -53,8 +53,8 @@ export default function ProgramPage() {
   };
   const [selectedMode, setSelectedMode] = useState(programModes[0]);
   return (
-    <section id="program" className="m-6 bg-[#50477C] py-6 rounded-3xl">
-      <div className="m-6 bg-[#50477C] py-6 rounded-3xl">
+    <section id="program" className="m-6 bg-[#50477C] rounded-3xl">
+      <div className="m-6 bg-[#50477C] rounded-3xl">
         <div className="border-2 text-white py-8 px-8 sm:px-8 lg:px-20 rounded-3xl">
           <motion.h1
             initial={{ opacity: 0, y: 50 }}
