@@ -9,12 +9,9 @@ const Navbar = () => {
 
   return (
     <nav className="rounded-t-4xl bg-white px-4 sm:px-6 pt-4 flex items-center justify-between relative">
-      {/* Logo */}
       <div className="flex items-center space-x-2">
         <Image src={logoImg} alt="Logo" width={80} height={80} className="w-20 sm:w-24" />
       </div>
-
-      {/* Desktop Nav Links */}
       <ul className="hidden md:flex space-x-4 lg:space-x-6 bg-[#f0ebeb] rounded-full px-4 py-2 text-[#50477C] font-medium text-sm lg:text-base">
         <li>
           <a
@@ -34,7 +31,7 @@ const Navbar = () => {
 
       {/* CTA Button (Desktop) */}
       <div className="hidden md:block">
-        <button className="bg-[#50477C] text-white rounded-full px-4 lg:px-5 py-2 text-sm lg:text-base transition duration-300 hover:bg-[#3e3a65] hover:scale-105">
+        <button className="bg-[#50477C] text-white rounded-full px-4 lg:px-5 py-2 text-sm lg:text-base transition duration-300 hover:bg-[#8a83b5] hover:scale-105">
           Join Now
         </button>
       </div>
